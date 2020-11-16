@@ -1,5 +1,4 @@
 require("@nomiclabs/hardhat-waffle");
-const hdnode = require('@ethersproject/hdnode');
 
 let mnemonic = process.env.MNEMONIC;
 if (typeof mnemonic === 'undefined')
@@ -9,13 +8,9 @@ module.exports = {
   solidity: "0.7.3",
   networks: {
     hardhat: {
-      accounts: {
-        mnemonic,
-        path: hdnode.defaultPath,
-        count: 5,
-        gasPrice: 0,
-        gasLimit: 0x1fffffffffffff,
-      }
+      forking: {
+        url: "https://rpc.l14.lukso.network"
+      },
     }
   }
 };
